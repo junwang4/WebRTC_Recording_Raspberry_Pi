@@ -71,7 +71,7 @@ def save_to_wave_file(audio):
     now = datetime.datetime.now()
     date = now.strftime("%Y%m%d")
     tm = now.strftime("%H%M%S")
-    path = "data/{}/{}.wav".format(date, tm)
+    path = "/home/pi/data/{}/{}.wav".format(date, tm)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with contextlib.closing(wave.open(path, 'wb')) as wf:
         wf.setnchannels(1)

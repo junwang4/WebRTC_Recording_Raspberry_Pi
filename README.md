@@ -23,6 +23,8 @@ git clone https://github.com/junwang4/WebRTC_Recording_Raspberry_Pi
 To give it a quick test,
 ```
 cd ~/git/WebRTC_Recording_Raspberry_Pi
+# note that the folder for saving your recordings is hardwired to /home/pi/data
+# to change the default folder, edit the file webrtc_recording.py
 python webrtc_recording.py
 ```
 
