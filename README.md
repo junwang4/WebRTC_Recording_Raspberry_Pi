@@ -16,8 +16,15 @@ Software
 ### Step by step
 #### Step 1
 * ssh to your raspberry pi
-* git clone https://github.com/junwang4/WebRTC_Recording_Raspberry_Pi
-* cd WebRTC_Recording_Raspberry_Pi
+```
+cd /home/pi/git
+git clone https://github.com/junwang4/WebRTC_Recording_Raspberry_Pi
+```
+To give it a quick test,
+```
+cd ~/git/WebRTC_Recording_Raspberry_Pi
+python webrtc_recording.py
+```
 
 #### Step 2: set up service
 * cd /lib/systemd/system/
@@ -37,6 +44,7 @@ Restart=on-abort
 WantedBy=multi-user.target
 ```
 #### STEP 3.
+```
 sudo systemctl daemon-reload
 
 sudo systemctl enable voice_recording.service
@@ -45,8 +53,9 @@ sudo systemctl start voice_recording.service
 sudo systemctl restart voice_recording.service
 sudo systemctl stop voice_recording.service
 
-To check the service's log
+# To check the service's log
 sudo journalctl -f -u voice_recording.service
+```
 
 
 ### Sound card setting and information
