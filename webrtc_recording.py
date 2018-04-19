@@ -1,6 +1,11 @@
+# Purpose: Recording conversation with a Raspberry Pi continually for one month
+#          Will need about 7G storage for one-month of wave files if recording two hours per day
 #
-# adapted from https://github.com/wiseman/py-webrtcvad/blob/master/example.py
+# Feature: use WebRTC VAD (should be the best one for real-time streaming) for filtering out non-speech
 #
+# Adapted from https://github.com/wiseman/py-webrtcvad/blob/master/example.py
+#
+
 import collections
 import contextlib
 import os
