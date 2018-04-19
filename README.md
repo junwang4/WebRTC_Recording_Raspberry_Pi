@@ -27,14 +27,20 @@ cd ~/git/WebRTC_Recording_Raspberry_Pi
 # to change the default folder, edit the file webrtc_recording.py
 python webrtc_recording.py
 ```
-* Sound card setting and information
-If it doesn't work, the problem is very likely related to sound card configuration.
-   - ~/.asoundrc for user "pi" (for a quick test)
-   - /etc/asound.conf for user "root"  (needed if you want to launch the voice recording as a service)
 
-#### Step 2: set up service
-* cd /lib/systemd/system/
-* sudo vi voice_recording.service
+**Sound card setting and information**
+* If it doesn't work, the problem is likely related to sound card configuration.
+   - ~/.asoundrc for user "pi" (for a quick test)
+   - /etc/asound.conf for user "root"  (needed for setting up the following service)
+
+#### Step 2: create a service so that the program can auto start when the Raspberry Pi boots (e.g. after power off and on)
+```
+cd /lib/systemd/system/
+sudo vi voice_recording.service
+```
+
+Note that in the following service setting, my executable **python** is located at **/home/pi/env/bin/python**, because I installed a virtual env there. If you want to use the virtual env too, see far below of this document.
+
 ```
 [Unit]
 Description=Voice Recording
@@ -49,6 +55,7 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 ```
+
 #### Step 3
 ```
 sudo systemctl daemon-reload
@@ -64,6 +71,14 @@ sudo systemctl stop voice_recording.service
 sudo journalctl -f -u voice_recording.service
 ```
 
+### If you want to use virtual env of python3
+```
+cd /home/pi
+python3 -m pip install --user virtualenv
+python3 -m virtualenv env
+source env/bin/activate
+```
+You may want to append a line `source env/bin/activate` to your `~/.bashrc` so that it is ready to use next time when you ssh to login
 
 
 ## Acknowledgement
