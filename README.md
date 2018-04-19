@@ -15,7 +15,7 @@ Software
 
 ### Step by step
 #### Step 1
-* ssh to your raspberry pi
+ssh to your raspberry pi
 ```
 cd /home/pi/git
 git clone https://github.com/junwang4/WebRTC_Recording_Raspberry_Pi
@@ -27,6 +27,10 @@ cd ~/git/WebRTC_Recording_Raspberry_Pi
 # to change the default folder, edit the file webrtc_recording.py
 python webrtc_recording.py
 ```
+* Sound card setting and information
+If it doesn't work, the problem is very likely related to sound card configuration.
+   - ~/.asoundrc for user "pi" (for a quick test)
+   - /etc/asound.conf for user "root"  (needed if you want to launch the voice recording as a service)
 
 #### Step 2: set up service
 * cd /lib/systemd/system/
@@ -45,14 +49,15 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 ```
-#### STEP 3.
+#### Step 3
 ```
 sudo systemctl daemon-reload
 
 sudo systemctl enable voice_recording.service
 
 sudo systemctl start voice_recording.service
-sudo systemctl restart voice_recording.service
+
+sudo systemctl restart voice_recording.service  # you may want to run these later
 sudo systemctl stop voice_recording.service
 
 # To check the service's log
@@ -60,10 +65,6 @@ sudo journalctl -f -u voice_recording.service
 ```
 
 
-### Sound card setting and information
-If it doesn't work, the problem is very likely related to sound card configuration.
-* ~/.asoundrc for user "pi"
-* /etc/asound.conf for user "root"  (needed if you want to launch the voice recording as a service) see Part 2 of this
 
 ## Acknowledgement
 * WebRTC VAD could be the fastest one for filtering out non-speech when recording human conversation in real-time situation.
