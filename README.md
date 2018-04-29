@@ -74,6 +74,7 @@ sudo journalctl -f -u voice_recording.service
 ### If you want to use virtual env of python3
 ```
 cd /home/pi
+sudo apt-get install python3-pip
 python3 -m pip install --user virtualenv
 python3 -m virtualenv env
 source env/bin/activate
