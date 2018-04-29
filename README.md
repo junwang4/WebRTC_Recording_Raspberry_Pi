@@ -6,7 +6,7 @@ Note that one hour of recording files takes about 100M storage.
 ## Getting Started
 ### Prerequisites
 Hardware
-* Raspberry Pi
+* Raspberry Pi (you may want to set timezone with `sudo dpkg-reconfigure tzdata`)
 * USB microphone
 
 Software
