@@ -13,6 +13,7 @@ Software
 * for best practice, create a virtual environment for python3 (see below)
 * PyAudio - [how to install officially](https://people.csail.mit.edu/hubert/pyaudio/)
 ```
+sudo apt-get update
 sudo apt-get install python-pyaudio python3-pyaudio
 sudo apt-get install portaudio19-dev
 pip install pyaudio
