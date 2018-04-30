@@ -24,7 +24,10 @@ pip install webrtcvad
 #### Step 1
 ssh to your raspberry pi
 ```
-cd /home/pi/git
+sudo apt-get install wget git-core
+cd /home/pi
+mkdir git
+cd git
 git clone https://github.com/junwang4/WebRTC_Recording_Raspberry_Pi
 ```
 To give it a quick test,
