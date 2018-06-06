@@ -42,7 +42,7 @@ def vad_loop(num_padding_frames=30):
     stream.start_stream()
 
     while True:
-        frame_chunk = stream.read(frame_data_size)
+        frame_chunk = stream.read(frame_data_size, exception_on_overflow = False)
         is_speech = vad.is_speech(frame_chunk, sample_rate)
         if debug:
             sys.stdout.write('1' if is_speech else '0')
