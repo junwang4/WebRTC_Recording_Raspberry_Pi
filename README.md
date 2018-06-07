@@ -42,6 +42,26 @@ python webrtc_recording.py
 * If it doesn't work, the problem is likely related to sound card configuration.
    - ~/.asoundrc for user "pi" (for a quick test)
    - /etc/asound.conf for user "root"  (needed for setting up the following service)
+* In my case, I used a USB mic (Logitec 720p), and my setting of /etc/asound.conf is (you may want to run "arecord -l" to find your device number for "hw")
+```
+pcm.!default {
+  type asym
+  capture.pcm "mic"
+  playback.pcm "speaker"
+}
+pcm.mic {
+  type plug
+  slave {
+    pcm "hw:1,0"
+  }
+}
+pcm.speaker {
+  type plug
+  slave {
+    pcm "hw:0,0"
+  }
+}
+```
 
 #### Step 2: create a service so that the program can auto start when the Raspberry Pi boots (e.g. after power off and on)
 ```
