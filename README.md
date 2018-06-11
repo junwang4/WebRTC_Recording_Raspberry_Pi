@@ -11,6 +11,15 @@ Hardware
 
 Software
 * for best practice, create a virtual environment for python3 (see below)
+```
+cd /home/pi
+sudo apt-get install python3-pip
+python3 -m pip install --user virtualenv
+python3 -m virtualenv env
+source env/bin/activate
+```
+You may want to append a line `source env/bin/activate` to your `~/.bashrc` so that it is ready to use next time when you ssh to login
+
 * PyAudio - [how to install officially](https://people.csail.mit.edu/hubert/pyaudio/)
 ```
 sudo apt-get update
